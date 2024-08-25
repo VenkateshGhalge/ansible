@@ -1,4 +1,4 @@
-# ansible
+# Ansible
 
 Ansible is a software tool that provides simple but powerful automation for cross-platform computer support. It is primarily intended for IT professionals, who use it for application deployment, updates on workstations and servers, cloud provisioning, configuration management, intra-service orchestration, and nearly anything a systems administrator does on a weekly or daily basis.
 
@@ -43,3 +43,39 @@ name: install apache on webservers
     ansible.builtin.apt:
       name: apache2
       state: present 
+
+to run the playbook 
+
+ansible-playbook -i webhost -u ansible -k firstplaybook.yaml
+
+## Ansible Role 
+
+ It is use to divided the playbook into small unit, so we have more readability and modularity. we divided different section of playbook into different folder is called as role 
+
+ below is folder 
+
+ roles/
+    common/               # this hierarchy represents a "role"
+        tasks/            #
+            main.yml      #  <-- tasks file can include smaller files if warranted
+        handlers/         #
+            main.yml      #  <-- handlers file
+        templates/        #  <-- files for use with the template resource
+            ntp.conf.j2   #  <------- templates end in .j2
+        files/            #
+            bar.txt       #  <-- files for use with the copy resource
+            foo.sh        #  <-- script files for use with the script resource
+        vars/             #
+            main.yml      #  <-- variables associated with this role
+        defaults/         #
+            main.yml      #  <-- default lower priority variables for this role
+        meta/             #
+            main.yml      #  <-- role dependencies
+        library/          # roles can also include custom modules
+        module_utils/     # roles can also include custom module_utils
+        lookup_plugins/   # or other types of plugins, like lookup in this case
+
+we can use the below command to created the folder 
+
+ansible-galaxy role init test 
+
