@@ -27,3 +27,8 @@ we will copy the public key from master node to managed node using below command
  vi ~/.ssh/authorized_key 
 
 then you can try to login using ssh 
+
+## Ansible playbook 
+
+In ansible playbook we have plays or task which need to performed on the servers, we can give the name of group and take action on them. 
+task use ansible modules which need to perform task like copy the file or install the software on the servers 
