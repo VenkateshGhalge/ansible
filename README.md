@@ -79,3 +79,5 @@ we can use the below command to created the folder
 
 ansible-galaxy role init test 
 
+
+
